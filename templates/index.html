@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Transform Your Business with Expert IT Consulting</h1>
+                <p class="lead mb-4">We provide comprehensive IT solutions to help your business grow, scale, and succeed in the digital landscape.</p>
+                <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">Get Started</a>
+            </div>
+            <div class="col-lg-6">
+                <i class="fas fa-laptop-code display-1"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-cogs fa-3x text-primary mb-3"></i>
+                <h4>IT Consulting</h4>
+                <p>Strategic technology planning and implementation</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-cloud fa-3x text-primary mb-3"></i>
+                <h4>Cloud Solutions</h4>
+                <p>Scalable cloud infrastructure and migration services</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                <h4>Cybersecurity</h4>
+                <p>Comprehensive security solutions and compliance</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

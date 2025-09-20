@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - ITVANAA{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1>About ITVANAA</h1>
+                <p class="lead">We are a leading IT consulting firm dedicated to helping businesses transform and thrive in the digital age.</p>
+                
+                <h3>Our Mission</h3>
+                <p>To empower businesses with innovative technology solutions that drive growth, efficiency, and competitive advantage.</p>
+                
+                <h3>Our Expertise</h3>
+                <p>With years of experience in the IT industry, our team of experts provides comprehensive consulting services across various domains including cloud computing, cybersecurity, digital transformation, and more.</p>
+                
+                <h3>Why Choose Us?</h3>
+                <ul>
+                    <li>Proven track record of successful implementations</li>
+                    <li>Industry-leading expertise and certifications</li>
+                    <li>Customized solutions tailored to your business needs</li>
+                    <li>24/7 support and maintenance services</li>
+                    <li>Competitive pricing and flexible engagement models</li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Ready to Get Started?</h5>
+                        <p class="card-text">Contact us today to discuss how we can help transform your business.</p>
+                        <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
