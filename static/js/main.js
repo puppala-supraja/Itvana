@@ -3,6 +3,51 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    // Enhanced navbar scroll effect
+    const navbar = document.getElementById('mainNavbar');
+    let lastScrollTop = 0;
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        // Hide/show navbar on scroll
+        if (!prefersReducedMotion) {
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                // Scrolling down
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                navbar.style.transform = 'translateY(0)';
+            }
+        }
+        
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+    
+    // Enhanced scroll reveal animations
+    const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-scale');
+    
+    const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
 
     // Initialize tooltips if Bootstrap is available
     if (typeof bootstrap !== 'undefined') {
@@ -241,11 +286,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Progress circle for scroll indicator
     const progressCircle = scrollToTop.querySelector('circle');
-    const pathLength = progressCircle ? progressCircle.getTotalLength() : 0;
-    if (progressCircle) {
-        progressCircle.style.strokeDasharray = pathLength;
-        progressCircle.style.strokeDashoffset = pathLength;
-    }
+    let pathLength = 0;
+    
+    // Wait for element to be rendered before calling getTotalLength
+    setTimeout(() => {
+        if (progressCircle && progressCircle.isConnected) {
+            try {
+                pathLength = progressCircle.getTotalLength();
+                progressCircle.style.strokeDasharray = pathLength;
+                progressCircle.style.strokeDashoffset = pathLength;
+            } catch (e) {
+                // Fallback for when getTotalLength fails
+                pathLength = 62.83; // approximate circumference for r=10
+                progressCircle.style.strokeDasharray = pathLength;
+                progressCircle.style.strokeDashoffset = pathLength;
+            }
+        }
+    }, 100);
 
     // Show/hide scroll to top button with progress
     window.addEventListener('scroll', function() {
@@ -274,15 +331,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Parallax effect for hero section
+    // Enhanced parallax effects
     if (!prefersReducedMotion) {
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const heroSection = document.querySelector('.hero-section');
+            const sections = document.querySelectorAll('.section');
+            
+            // Hero parallax
             if (heroSection) {
-                const speed = scrolled * 0.5;
+                const speed = scrolled * 0.3;
                 heroSection.style.transform = `translateY(${speed}px)`;
+                
+                // Add rotation to hero SVG
+                const heroSvg = heroSection.querySelector('.hero-svg');
+                if (heroSvg) {
+                    heroSvg.style.transform = `rotate(${scrolled * 0.1}deg)`;
+                }
             }
+            
+            // Parallax for other sections
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                const speed = (scrolled - (section.offsetTop - window.innerHeight)) * 0.1;
+                
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    section.style.transform = `translateY(${speed}px)`;
+                }
+            });
+            
+            // Floating elements animation
+            const floatingElements = document.querySelectorAll('.service-icon, .stats-number');
+            floatingElements.forEach((element, index) => {
+                const speed = Math.sin(scrolled * 0.01 + index) * 10;
+                element.style.transform = `translateY(${speed}px)`;
+            });
         });
     }
 
@@ -299,26 +382,147 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    // Text typing effect for hero
+    // Enhanced text animations
     const heroTitle = document.querySelector('.hero-section h1');
     if (heroTitle && !prefersReducedMotion) {
-        const originalText = heroTitle.textContent;
-        heroTitle.textContent = '';
-        let i = 0;
-        const typeWriter = () => {
-            if (i < originalText.length) {
-                heroTitle.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
+        // Animate gradient text
+        const gradientText = heroTitle.querySelector('.text-gradient');
+        if (gradientText) {
+            let angle = 0;
+            setInterval(() => {
+                angle += 2;
+                gradientText.style.background = `linear-gradient(${angle}deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--bright-pink) 100%)`;
+                gradientText.style.webkitBackgroundClip = 'text';
+                gradientText.style.backgroundClip = 'text';
+            }, 100);
+        }
+    }
+    
+    // Add magnetic effect to buttons
+    const magneticButtons = document.querySelectorAll('.btn');
+    magneticButtons.forEach(button => {
+        button.addEventListener('mousemove', function(e) {
+            if (!prefersReducedMotion) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
             }
-        };
-        setTimeout(typeWriter, 1000);
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translate(0px, 0px) scale(1)';
+        });
+    });
+    
+    // Add glitch effect to navbar brand
+    const navbarBrand = document.querySelector('.navbar-brand');
+    if (navbarBrand && !prefersReducedMotion) {
+        setInterval(() => {
+            navbarBrand.style.textShadow = `
+                ${Math.random() * 2}px ${Math.random() * 2}px 0 rgba(0, 212, 255, 0.8),
+                ${Math.random() * -2}px ${Math.random() * 2}px 0 rgba(255, 29, 142, 0.8)
+            `;
+            
+            setTimeout(() => {
+                navbarBrand.style.textShadow = '0 0 20px rgba(0, 212, 255, 0.5)';
+            }, 100);
+        }, 3000);
     }
 
     // Initialize all animations
     if (!prefersReducedMotion) {
         initAnimations();
     }
+    
+    // Add smooth cursor following effect
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    cursor.style.cssText = `
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease;
+        mix-blend-mode: difference;
+    `;
+    document.body.appendChild(cursor);
+    
+    if (!prefersReducedMotion) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+        
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'scale(1.5)';
+        });
+        
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'scale(1)';
+        });
+    }
+    
+    // Add loading screen with animation
+    const loadingScreen = document.createElement('div');
+    loadingScreen.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-hero);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        transition: opacity 0.5s ease;
+    `;
+    
+    loadingScreen.innerHTML = `
+        <div style="text-align: center; color: white;">
+            <div style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem; animation: pulse 2s ease-in-out infinite;">
+                ✨ ITVANAA
+            </div>
+            <div style="width: 50px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 2px; margin: 0 auto; overflow: hidden;">
+                <div style="width: 100%; height: 100%; background: white; border-radius: 2px; transform: translateX(-100%); animation: loadingBar 2s ease-in-out infinite;"></div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(loadingScreen);
+    
+    // Add CSS animations for loading
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes loadingBar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .custom-cursor {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .custom-cursor {
+                display: block;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Hide loading screen after page loads
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.remove();
+            }, 500);
+        }, 1000);
+    });
 });
 
 // Utility functions
