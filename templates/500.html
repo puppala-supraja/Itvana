@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error - ITVANAA{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="error-page">
+                <h1 class="display-1 fw-bold text-danger">500</h1>
+                <h2 class="mb-4">Internal Server Error</h2>
+                <p class="lead mb-4">
+                    We're experiencing some technical difficulties. Our team has been notified and is working to resolve the issue.
+                </p>
+                <div class="error-actions">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-home me-2"></i>Go Home
+                    </a>
+                    <button onclick="window.location.reload()" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-sync-alt me-2"></i>Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Support Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h4 class="mb-4">Need Immediate Assistance?</h4>
+                <p class="text-muted mb-4">
+                    If you continue to experience issues, please don't hesitate to contact our support team.
+                </p>
+                
+                <div class="support-options">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="p-4 bg-white rounded shadow-sm">
+                                <i class="fas fa-phone text-primary mb-2" style="font-size: 2rem;"></i>
+                                <h6>Phone Support</h6>
+                                <p class="text-muted small mb-0">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="p-4 bg-white rounded shadow-sm">
+                                <i class="fas fa-envelope text-primary mb-2" style="font-size: 2rem;"></i>
+                                <h6>Email Support</h6>
+                                <p class="text-muted small mb-0">support@itvanaa.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="p-4 bg-white rounded shadow-sm">
+                                <i class="fas fa-clock text-primary mb-2" style="font-size: 2rem;"></i>
+                                <h6>Business Hours</h6>
+                                <p class="text-muted small mb-0">Mon-Fri: 9AM-6PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found - ITVANAA{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="error-page">
+                <h1 class="display-1 fw-bold text-primary">404</h1>
+                <h2 class="mb-4">Page Not Found</h2>
+                <p class="lead mb-4">
+                    Sorry, the page you are looking for doesn't exist or has been moved.
+                </p>
+                <div class="error-actions">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-home me-2"></i>Go Home
+                    </a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-envelope me-2"></i>Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center mb-4">
+                    <h4>Looking for something specific?</h4>
+                    <p class="text-muted">Try searching or browse our popular pages</p>
+                </div>
+                
+                <div class="popular-links">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <a href="{{ url_for('services') }}" class="d-block p-3 bg-white rounded shadow-sm text-decoration-none">
+                                <i class="fas fa-cogs text-primary me-2"></i>
+                                <span>Our Services</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="{{ url_for('about') }}" class="d-block p-3 bg-white rounded shadow-sm text-decoration-none">
+                                <i class="fas fa-users text-primary me-2"></i>
+                                <span>About Us</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="{{ url_for('blog') }}" class="d-block p-3 bg-white rounded shadow-sm text-decoration-none">
+                                <i class="fas fa-blog text-primary me-2"></i>
+                                <span>Blog</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="{{ url_for('contact') }}" class="d-block p-3 bg-white rounded shadow-sm text-decoration-none">
+                                <i class="fas fa-phone text-primary me-2"></i>
+                                <span>Contact</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

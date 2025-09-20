@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section d-flex align-items-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    Transforming Business Through 
+                    <span class="text-primary" id="typewriter"></span>
+                </h1>
+                <p class="lead mb-4">
+                    ITVANAA delivers innovative IT consulting solutions that drive digital transformation and accelerate business growth. Partner with us to unlock your organization's full potential.
+                </p>
+                <div class="hero-buttons">
+                    <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg me-3">Get Started Today</a>
+                    <a href="{{ url_for('services') }}" class="btn btn-outline-primary btn-lg">Explore Services</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="parallax-container">
+                    <div class="parallax-image floating-element" data-speed="0.3">
+                        <img src="https://pixabay.com/get/ge9af24a23eab8cb46a5ae739cf344f26f6456c4ee1419081c8c6f2690b7e40a8bbceb61ae11e823a0d99f0a41d9878344828dc45855e1947292ee98ac7a551e9_1280.jpg" 
+                             alt="Professional IT Consulting" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Company Values Section -->
+<section class="py-5 bg-light pattern-bg">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm animate-stagger-1">
+                    <div class="card-body p-4">
+                        <i class="fas fa-handshake text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Trust & Collaboration</h5>
+                        <p class="card-text">We build lasting relationships with our clients based on trust, transparency, and collaborative partnerships that drive mutual success.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm animate-stagger-2">
+                    <div class="card-body p-4">
+                        <i class="fas fa-rocket text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Innovation & Growth</h5>
+                        <p class="card-text">We embrace cutting-edge technologies and innovative approaches to help businesses stay ahead in the rapidly evolving digital landscape.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm animate-stagger-3">
+                    <div class="card-body p-4">
+                        <i class="fas fa-award text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Quality & Excellence</h5>
+                        <p class="card-text">We deliver exceptional results through rigorous quality standards, best practices, and a commitment to excellence in everything we do.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="parallax-container">
+                    <div class="parallax-image floating-element" data-speed="0.4">
+                        <img src="https://pixabay.com/get/g42c1431de6f9df6c99ab8d329671d5de8aaaf3cfb5aa921d6039e8b1f070a8f283b03fc12c2d27e2cd8c680db2ecaf52a40e918bb9abbd79dbdb636647861fd3_1280.jpg" 
+                             alt="IT Consulting Team" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="mb-4">About ITVANAA</h2>
+                <p class="lead mb-4">
+                    ITVANAA is a leading IT consulting firm specializing in digital transformation, cloud solutions, and technology strategy. We help organizations navigate the complex technology landscape and achieve their business objectives.
+                </p>
+                <p class="mb-4">
+                    Our team of experienced professionals brings deep expertise across multiple industries and technologies. We understand that every business is unique, which is why we take a personalized approach to deliver solutions that align with your specific needs and goals.
+                </p>
+                <ul class="list-unstyled mb-4">
+                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> 10+ Years of Industry Experience</li>
+                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Certified Technology Experts</li>
+                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Proven Track Record of Success</li>
+                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> 24/7 Support & Maintenance</li>
+                </ul>
+                <a href="{{ url_for('about') }}" class="btn btn-primary">Learn More About Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5 bg-light pattern-bg">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Our Services</h2>
+            <p class="lead">Comprehensive IT solutions to drive your business forward</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm service-card animate-stagger-1">
+                    <div class="card-body p-4">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-laptop-code text-primary"></i>
+                        </div>
+                        <h5 class="card-title">IT Consulting</h5>
+                        <p class="card-text">Strategic technology consulting to optimize your IT infrastructure and drive digital transformation.</p>
+                        <a href="{{ url_for('service_detail', service_name='it-consulting') }}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm service-card animate-stagger-2">
+                    <div class="card-body p-4">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-users text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Staff Augmentation</h5>
+                        <p class="card-text">Skilled IT professionals to augment your team and accelerate project delivery.</p>
+                        <a href="{{ url_for('service_detail', service_name='staff-augmentation') }}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm service-card animate-stagger-3">
+                    <div class="card-body p-4">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-cloud text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Cloud Solutions</h5>
+                        <p class="card-text">Comprehensive cloud services to modernize your infrastructure and enhance scalability.</p>
+                        <a href="{{ url_for('service_detail', service_name='cloud-solutions') }}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ url_for('services') }}" class="btn btn-primary btn-lg">View All Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">What Our Clients Say</h2>
+            <p class="lead">Trusted by organizations worldwide</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm animate-stagger-1">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">"ITVANAA transformed our IT infrastructure and helped us achieve digital transformation goals. Their expertise and dedication are unmatched."</p>
+                        <div class="d-flex align-items-center">
+                            <div class="testimonial-avatar me-3">
+                                <i class="fas fa-user-circle text-primary" style="font-size: 3rem;"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Sarah Johnson</h6>
+                                <small class="text-muted">CTO, TechCorp Solutions</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm animate-stagger-2">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">"The team at ITVANAA delivered exceptional results on our cloud migration project. Professional, efficient, and always available when needed."</p>
+                        <div class="d-flex align-items-center">
+                            <div class="testimonial-avatar me-3">
+                                <i class="fas fa-user-circle text-primary" style="font-size: 3rem;"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Michael Chen</h6>
+                                <small class="text-muted">IT Director, Global Enterprises</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm animate-stagger-3">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">"ITVANAA's staff augmentation service provided us with skilled developers who seamlessly integrated with our team. Highly recommended!"</p>
+                        <div class="d-flex align-items-center">
+                            <div class="testimonial-avatar me-3">
+                                <i class="fas fa-user-circle text-primary" style="font-size: 3rem;"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Emma Rodriguez</h6>
+                                <small class="text-muted">Project Manager, Innovation Labs</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-3">Ready to Transform Your Business?</h2>
+        <p class="lead mb-4">Let's discuss how ITVANAA can help you achieve your technology goals and drive business success.</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">Start Your Journey Today</a>
+    </div>
+</section>
+{% endblock %}

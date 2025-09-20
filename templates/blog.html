@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Blog - ITVANAA{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-3">Insights & Perspectives</h1>
+                <p class="lead">Stay informed with the latest trends, insights, and best practices in IT consulting and technology</p>
+            </div>
+            <div class="col-lg-4">
+                <div class="parallax-container">
+                    <div class="parallax-image floating-element" data-speed="0.3">
+                        <img src="https://pixabay.com/get/g7aa2878960505091312aef11f55aab45e421111e52c49b8a58fd04f24e547146fca33bd6e656620b4595dcac1bfc0c7ca351cdae01ef8be4ea721047d0849b46_1280.jpg" 
+                             alt="Technology Insights" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Posts -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="{{ post.image }}" class="card-img-top" alt="{{ post.title }}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <div class="mb-2">
+                            <small class="text-muted">{{ post.date }}</small>
+                        </div>
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text flex-grow-1">{{ post.excerpt }}</p>
+                        <a href="#" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Featured Posts -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="mb-4">Featured Articles</h2>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://pixabay.com/get/g260b8fd416a05203233e08e62b8f29c0d71d56324064bb11acbe7bf51943ac0a2a62f9657b9ac002f5a4f6c1baa556e3a7a1d09132d42ceaa6ba54e35fe495e2_1280.jpg" 
+                                 class="img-fluid rounded-start h-100" alt="Technology Solutions" style="object-fit: cover;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <small class="text-muted">2025-01-12</small>
+                                <h5 class="card-title">Digital Transformation: A Complete Guide for 2025</h5>
+                                <p class="card-text">Comprehensive insights into digital transformation strategies and implementation best practices.</p>
+                                <a href="#" class="btn btn-primary btn-sm">Read Article</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://pixabay.com/get/geecc1ddd51b19f1e751a8e6b5d576b2d0ec2d601fae8a0a5d3fe36c700721f2e15014a995705b1d7cd274ae511e858764a9bd027179cb83f2218289ff98b90e0_1280.jpg" 
+                                 class="img-fluid rounded-start h-100" alt="Business Meeting" style="object-fit: cover;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <small class="text-muted">2025-01-08</small>
+                                <h5 class="card-title">Building Resilient IT Infrastructure</h5>
+                                <p class="card-text">Learn how to create robust, scalable IT systems that can adapt to changing business needs.</p>
+                                <a href="#" class="btn btn-primary btn-sm">Read Article</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Browse by Category</h2>
+            <p class="lead">Explore our content organized by topics</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body p-4">
+                        <i class="fas fa-cloud text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Cloud Computing</h5>
+                        <p class="card-text">Latest trends and best practices in cloud technology</p>
+                        <a href="#" class="btn btn-outline-primary">View Posts</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body p-4">
+                        <i class="fas fa-shield-alt text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Cybersecurity</h5>
+                        <p class="card-text">Security insights and threat protection strategies</p>
+                        <a href="#" class="btn btn-outline-primary">View Posts</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body p-4">
+                        <i class="fas fa-cogs text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Digital Transformation</h5>
+                        <p class="card-text">Modernization strategies and success stories</p>
+                        <a href="#" class="btn btn-outline-primary">View Posts</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body p-4">
+                        <i class="fas fa-users text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">IT Leadership</h5>
+                        <p class="card-text">Management insights and industry perspectives</p>
+                        <a href="#" class="btn btn-outline-primary">View Posts</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Signup -->
+<section class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-3">Never Miss an Update</h2>
+        <p class="lead mb-4">Subscribe to our newsletter for the latest insights and industry trends</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <form action="{{ url_for('newsletter') }}" method="POST" class="d-flex">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="email" name="email" class="form-control me-2" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-light">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
