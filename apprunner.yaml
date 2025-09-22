@@ -3,4 +3,4 @@ runtime: python3
 build:
   commands: "pip install --upgrade pip && pip install -r requirements.txt"
 run:
-  command: "python app.py"
+  command: gunicorn -w 4 -b 0.0.0.0:8080 app:app
